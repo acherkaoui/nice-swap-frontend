@@ -1,0 +1,64 @@
+<mat-card class="page-container">
+<div>
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="binance">
+      <th mat-header-cell *matHeaderCellDef> Binance </th>
+      <td mat-cell *matCellDef="let element"> {{element.binance}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="uniswap">
+      <th mat-header-cell *matHeaderCellDef> Uniswap </th>
+      <td mat-cell *matCellDef="let element"> {{element.uniswap}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="bittrex">
+      <th mat-header-cell *matHeaderCellDef> Bittrex </th>
+      <td mat-cell *matCellDef="let element"> {{element.bittrex}} </td>
+    </ng-container>
+
+
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="pancakeswap">
+      <th mat-header-cell *matHeaderCellDef> Pancake Swap </th>
+      <td mat-cell *matCellDef="let element"> {{element.pancakeswap}} </td>
+    </ng-container>
+
+
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="swap">
+      <th mat-header-cell *matHeaderCellDef> Nice Swap </th>
+      <td mat-cell *matCellDef="let element"> {{element.swap}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="benefice">
+      <th mat-header-cell *matHeaderCellDef> Benefice </th>
+      <td mat-cell *matCellDef="let element"> {{element.benefice}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">     <button mat-raised-button color="primary">
+        SWAP
+      </button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[20, 40, 100]" showFirstLastButtons></mat-paginator>
+</div>
+</mat-card>

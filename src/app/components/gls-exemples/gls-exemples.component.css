@@ -1,20 +1,9 @@
 .feeds .mat-card {
-    width: 33%;
+  width: 33%;
 }
 
 mat-sidenav-container.m2app-dark {
   background: black;
-}
-
-.app-content {
-  padding-top: 4rem;
-}
-
-.m2app-dark {
-  .app-content {
-    background-color: rgb(72, 63, 90);
-    background-image: none;
-  }
 }
 
 @keyframes float {
@@ -65,19 +54,24 @@ mat-sidenav-container.m2app-dark {
   background: linear-gradient(90deg,#00ffd9,#00ff84);
 }
 
-.app-content {
+.example-content {
   padding: 5px;
 }
 
-.app-content mat-card {
+.example-content mat-card {
   margin: 5px;
+}
+
+.example-content button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .app-sidenav {
   min-width: 200px;
 }
 
-.app-content mat-checkbox {
+.example-content mat-checkbox, mat-radio-button {
   margin: 10px;
 }
 
