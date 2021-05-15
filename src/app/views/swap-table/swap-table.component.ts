@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Socket } from 'ngx-socket-io';
+
 
 /**
  * @title Table with pagination
@@ -25,11 +27,27 @@ export class SwapTableComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  constructor(private socket: Socket) { }
+  ngOnInit(): void {
 
+  }
   ngAfterViewInit() {
+    this.socket.on('broadcast', (data) => {
+      console.log(data)
+      this.updateTablePrice(data['symbol'], data['price'])
+
+    });
     this.dataSource.paginator = this.paginator;
   }
+  updateTablePrice(symbol, price) {
+    console.log(this.dataSource.data.length)
+    for (var i = 0; i < this.dataSource.data.length; i++) {
+      if(this.dataSource.data[i].symbol == symbol)
+      this.dataSource.data[i].binance = price
+    }
+  }
 }
+
 
 export interface PeriodicElement {
   symbol: string;
@@ -52,7 +70,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'ETH',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -61,7 +79,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'BNB',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -70,7 +88,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'ADA',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -79,7 +97,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'DOGE',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -88,7 +106,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'USDT',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -97,7 +115,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'XRP',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -106,7 +124,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'DOT',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -115,7 +133,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'ICP',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -124,7 +142,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'BCH',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -133,7 +151,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'UNI',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -142,7 +160,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'LTC',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -151,7 +169,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'LINK',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -160,7 +178,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'XML',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -169,7 +187,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'USDC',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -178,7 +196,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'ETC',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -187,7 +205,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'VET',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -196,7 +214,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'SOL',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -205,7 +223,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'EOS',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,
@@ -214,7 +232,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     benefice: '+7.90%',
   },
   {
-    symbol: 'BTC',
+    symbol: 'MATIC',
     binance: 54000,
     uniswap: 55000.0,
     bittrex: 54050.0,

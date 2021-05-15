@@ -12,6 +12,8 @@ import { GlsExemplesComponent } from './components/gls-exemples/gls-exemples.com
 import { DialogContentComponent } from './components/gls-dialog/gls-dialog.component';
 import { SwapTableComponent } from './views/swap-table/swap-table.component';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { DocumentListComponent } from './document-list/document-list.component';
+import { DocumentComponent } from './components/document/document.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 @NgModule({
@@ -30,6 +32,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     FeedQueueComponent,
     GlsExemplesComponent,
     SwapTableComponent,
+    DocumentListComponent,
+    DocumentComponent,
   ],
   entryComponents: [DialogContentComponent],
   bootstrap: [AppComponent],
