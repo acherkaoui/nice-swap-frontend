@@ -34,16 +34,29 @@ export class SwapTableComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.socket.on('broadcast', (data) => {
       console.log(data)
-      this.updateTablePrice(data['symbol'], data['price'])
-
+      if(data['exchange'] == "binance")
+      {
+        console.log('binance')
+        this.updateTablePriceBinance(data['symbol'], data['price'])
+      }
+      else if (data['exchange'] == "bittrex") {
+        console.log('bittrex')
+        this.updateTablePriceBittrex(data['symbol'], data['price'])
+      }
     });
     this.dataSource.paginator = this.paginator;
   }
-  updateTablePrice(symbol, price) {
+  updateTablePriceBinance(symbol, price) {
     console.log(this.dataSource.data.length)
     for (var i = 0; i < this.dataSource.data.length; i++) {
       if(this.dataSource.data[i].symbol == symbol)
       this.dataSource.data[i].binance = price
+    }
+  }
+  updateTablePriceBittrex(symbol, price) {
+    for (var i = 0; i < this.dataSource.data.length; i++) {
+      if(this.dataSource.data[i].symbol == symbol)
+      this.dataSource.data[i].bittrex = price
     }
   }
 }
