@@ -1,35 +1,34 @@
-@import '~@angular/material/theming';
-@include mat-core();
+@use '~@angular/material' as mat;
+@include mat.core();
 
 /* ======== angular material custom theme ======== */
 
-@import '~@angular/material/theming';
 
 // Define a custom typography config that overrides the font-family as well as the
 // `headlines` and `body-1` levels.
-$custom-typography: mat-typography-config(
+$custom-typography: mat.define-typography-config(
   $font-family: 'Kanit, sans-serif',
-  $headline: mat-typography-level(32px, 48px, 700),
-  $body-1: mat-typography-level(16px, 24px, 500)
+  $headline: mat.define-typography-level(32px, 48px, 700),
+  $body-1: mat.define-typography-level(16px, 24px, 500)
 );
 
 // Override typography CSS classes (e.g., mat-h1, mat-display-1, mat-typography, etc.).
-@include mat-base-typography($custom-typography);
+@include mat.typography-hierarchy($custom-typography);
 
 // Override typography for a specific Angular Material components.
-@include mat-checkbox-typography($custom-typography);
+@include mat.checkbox-typography($custom-typography);
 
 // Override typography for all Angular Material, including mat-base-typography and all components.
-@include angular-material-typography($custom-typography);
+@include mat.all-component-typographies($custom-typography);
 
 // Override the typography in the core CSS.
-@include mat-core($custom-typography);
+@include mat.core($custom-typography);
 
 // Colors
 
 $dark-primary-text: #8f80ba;
 
-$mat-purple: (
+mat.$purple-palette: (
   50: #e1bee7,
   100: #e1bee7,
   200: #dba5e2,
@@ -45,26 +44,26 @@ $mat-purple: (
   A400:  #e1bee7,
   A700: #e1bee7,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $dark-primary-text,
-    600: $dark-primary-text,
-    700: $dark-primary-text,
-    800: $dark-primary-text,
-    900: $dark-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
 
 
-$mat-pink: (
+mat.$pink-palette: (
   50: #fce4ec,
   100: #8F80BA,
   200: #e1bee7,
@@ -80,25 +79,25 @@ $mat-pink: (
   A400: #f50057,
   A700: #c51162,
   contrast: (
-    50: $dark-primary-text,
-    100: $light-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
+    50: rgba(black, 0.87),
+    100: white,
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
   )
 );
 
 
-$mat-green: (
+mat.$green-palette: (
   50: #e8f5e9,
   100: #c8e6c9,
   200: #a5d6a7,
@@ -114,25 +113,25 @@ $mat-green: (
   A400: #00e676,
   A700: #00c853,
   contrast: (
-    50: $light-primary-text,
-    100: $light-primary-text,
-    200: $light-primary-text,
-    300: $light-primary-text,
-    400: $light-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $light-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
+    50: white,
+    100: white,
+    200: white,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
   )
 );
 
 
-$mat-cyan: (
+mat.$cyan-palette: (
   50: #e0f7fa,
   100: #b2ebf2,
   200: #80deea,
@@ -148,47 +147,47 @@ $mat-cyan: (
   A400: #00e5ff,
   A700: #00b8d4,
   contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $dark-primary-text,
-    400: $dark-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $dark-primary-text,
-    A400: $dark-primary-text,
-    A700: $dark-primary-text,
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
   )
 );
 
 
-$my-custom-primary: mat-palette($mat-purple);
-$my-custom-accent: mat-palette($mat-pink, 100, 500, A100);
-$my-custom-warn: mat-palette($mat-cyan);
+$my-custom-primary: mat.define-palette(mat.$purple-palette);
+$my-custom-accent: mat.define-palette(mat.$pink-palette, 100, 500, A100);
+$my-custom-warn: mat.define-palette(mat.$cyan-palette);
 
 // Light theme
-$my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+$my-custom-theme: mat.define-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
 
 // Dark theme
-//$my-custom-theme: mat-dark-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+//$my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
 
 // Main theme defination
-@include angular-material-theme($my-custom-theme);
+@include mat.all-component-themes($my-custom-theme);
 
 
 // Alternate Angular Material Theme
 .my-alternate-theme {
-  $my-alternate-primary: mat-palette($mat-purple);
-  $my-alternate-accent: mat-palette($mat-green, 400);
-  $my-alternate-warn: mat-palette($mat-cyan);
+  $my-alternate-primary: mat.define-palette(mat.$purple-palette);
+  $my-alternate-accent: mat.define-palette(mat.$green-palette, 400);
+  $my-alternate-warn: mat.define-palette(mat.$cyan-palette);
 
-  $my-alternate-theme: mat-dark-theme($my-alternate-primary, $my-alternate-accent, $my-alternate-warn);
+  $my-alternate-theme: mat.define-dark-theme($my-alternate-primary, $my-alternate-accent, $my-alternate-warn);
 
-  @include angular-material-theme($my-alternate-theme);
+  @include mat.all-component-themes($my-alternate-theme);
 }
 
 
